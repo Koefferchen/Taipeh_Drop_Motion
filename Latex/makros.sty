@@ -1,0 +1,55 @@
+% -------------------------------------------------- %
+% ---------------- Makro Definitions --------------- %
+% -------------------------------------------------- % 
+
+
+    % synonym for text-underscore in mathmode
+\newcommand{\sub}[1]{_{\text{#1}}}  
+
+    % synonym for text-overscore in mathmode
+\newcommand{\up}[1]{^{\text{#1}}}  
+
+	% roman numerals
+\newcommand{\uproman}[1]{\text{\uppercase\expandafter{\romannumeral#1}}}
+
+    % partial derivative of #1 with respect to #2
+\newcommand{\partdiff}[2]{\frac{\partial #1}{\partial #2}}  
+
+    % commentary red: Something is wrong here!
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+    % commentary red: open questions
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+    % for short phrases within equations
+\newcommand{\qtext}[1]{\qquad \text{#1}}
+
+    % for short phrases within equations
+\newcommand{\textq}[1]{\text{#1} \qquad}
+
+    % for short phrases within equations
+\newcommand{\qtextq}[1]{\qquad \text{#1} \qquad}
+
+    % automatically tag only a specific line in align*
+\newcommand{\singletag}{\stepcounter{equation}\tag{\theequation}}
+
+    % Imaginary Part
+\renewcommand{\Im}{\text{Im} \,}
+
+    % Real Part
+\renewcommand{\Re}{\text{Re} \,}
+
+    % Identity matrix in x Dimensions
+\newcommand{\id}[1]{\mathbf{1}_{#1}}
+
+    % abbreviation: s_thr 
+\newcommand{\sthr}{s\sub{thr}}
+
+    % symbol for spacial momentum k(s) on-shell evaluated
+\newcommand{\ks}{\mathcal{K}(s)}
+
+    % pole position 
+\newcommand{\spole}{s_*}
+
+    % partial wave amplitude 
+\newcommand{\Mp}{\tilde{\mathcal{M}}}

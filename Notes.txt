@@ -1,0 +1,187 @@
+
+
+-----------------------------------------
+---------- Thursday 13. August ----------
+-----------------------------------------
+
+
+------------ Experimentation ------------
+
+
+
+1.  Turn on all required Electronics
+    >> the PC (If the display doesnt go on, plug out and in the USB cable)
+    >> the front light (huge light)
+    >> the top light (small, machine is below the table left)
+    >> the camera (power on)
+
+2.  Open "CL-NavigorN" for the Control of the Laser
+
+3.  Open "60fps_5000.pcs" (PFV Symbol) for the Camera Control
+    >> Choose Shutter as "1/15385 sec"
+
+4.  Open "PIMicroMove" for the Piezo Motor Control (Move Sample)
+    >> the "Q-545" / "SN 0416" is the only Piezo we need 
+
+5.  Sample Preparation 
+    >> there are 4 different samples, but dried PDMS is the easiest to start
+    >> the droplet is always twice-boiled water (not destilled)
+    >> sample cleaning is done best with tape
+    >> sample cleaning with suitable chemicals would be best (we dont have)
+    >> sample cleaning with boiled water could help (or worsen it)
+    >> place the sample below the beam
+
+6.  Laser Calibration (only once)
+    >> Rotate the beam until the laser gets a signal. The laser can only operate in a certain window of distance since it uses diagonal beams.
+    >> Once the laser has horizontal sight contact with the beam, lower the beam until it barely touches the sample. Then, lower the laser until the point where it starts loosing vertical sight contact with the beam. From there, move the Laser up by 300um. 
+
+7.  Beam Calibration 
+    >> Let the beam down until it barely touches the sample.
+    >> Now move the beam up 250um above the sample.
+
+8.  System Settings
+    >> Make sure the Piezo motor is in "Home" position before each measurement
+    >> Make sure to use only parts of the sample that are flat and clean
+    >> Reset the Distance measured by the laser to 0 before measurement.
+
+9.  Measurement of static & dynamic adhesive Force
+    >> Pour a droplet of fixed volume between beam and laser on the sample.
+    >> Make sure that the droplet is centered in the trajectory of the beam.
+    >> Drive the droplet into beam until they touch     
+    >> Pulling method: drive back at constant speed
+    >> Pushing method: drive further throgh the drop at constant speed
+    >> The max. force measured is approx the static force
+    >> The convergent value of the force is approx the dynamic force
+
+10. Parameters to be measured
+    >> Whole force profile of the measurement
+        >> static force
+        >> dynmaic force
+    >> drop volume 
+    >> initial drop contact line (untouched)
+    >> initial drop contact angle (untouched)
+    >> dynamic advancing & receding contact angle (while equilibrium movement)
+    >> room temperature (thermometer + AC on at approx 28°C)
+    >> room humidity (need new devive)
+    >> duration of experiment (to estimate evaporation)
+    >> time between consecutive experiments (to estimate material memory impact)
+    
+
+
+
+
+
+
+-----------------------------------------
+----------- Friday 14. August -----------
+-----------------------------------------
+
+
+--------- The Plan & Objectives ---------
+
+
+1.  Images for the Professor
+    >> take cylindrical (transparent) objects 
+    >> apply droplets of different size and impact (pressing)
+    >> make photos and measure contact lines / contact angles
+    >> expectation: at soft pressing, the longest contact line is parellel to the long axis of the cylinder (else: perpendicular)
+
+2.  Cut half-cylinder samples
+    >> dont tell the professor 
+    >> keep price per bill below 2000 NTD
+    >> laser-cut samples of different diameter 
+    >> material is PMMA (keep it below 60°C)
+
+3.  Apply coating with what we have
+    >> dont tell the professor 
+    >> one PMMA sample (no coating)
+    >> one PET sample (melt film on it)
+    >> maybe: PDSA sample (dry or normal? in storage?)
+    >> maybe: others 
+
+4.  Measure static contact angles for each sample
+    >> equilibrium contact angle
+    >> advancing contact angle
+    >> deceding contact angle
+    >> maybe: dependence on placement technique & pressing 
+
+5.  Measure adhesion force for each sample 
+    >> static and dynamic adhesion force 
+    >> repeated measurement to minimize error
+    >> for different drop sizes 
+    >> maybe: dependence on placement technique & pressing
+
+6.  Central observables 
+    >> horizontal and vertical contact line (depend. on curvature)
+    >> contact angles
+    >> top & bottom view 
+    >> side view 
+    >> adhesion force 
+
+
+
+-----------------------------------------
+----------- Monday 17. August -----------
+-----------------------------------------
+
+
+1. Measure diameters of new PMMA cylinders (3 of each size, length = 5cm)
+
+>> 10 mm:   10.2(1) mm      
+>> 05 mm:   5.15(4) mm 
+>> 04 mm:   3.99(2) mm
+>> 03 mm:   3.17(2) mm
+>> 02 mm:   2.19(2) mm
+
+>> tool has accuracy of 1/100 mm
+>> material flexibility increases uncertainty
+>> each measured at both ends
+>> no significant deviations noted for 10mm, 5mm 
+
+
+-----------------------------------------
+----------- Tuesday 18. August -----------
+-----------------------------------------
+
+
+1. Setup of Cylinder Measurements 
+
+2. Measurement 2ul full press of all cylinder sizes (4 reps.) from side view
+
+>> comparison beam width: 1.53(2) mm 
+>> measurement of front view difficult, missing contrast
+>> will get my own aparature instead of using DAFI
+>> adjust focus at camera and by moving target block
+>> use comparison beam to see where the image is sharp
+>> top light does not help (is not adjusted right)
+>> can use contrast options and shutter from camera to adjust 
+>> be careful that cylinder is on level (no inclination)
+>> be careful not to use PDSD water (soap like)
+>> full-press when taking water makes volume x1.5
+>> next time: only full-press when letting water out
+>> lift beam up before making experiment at DAFI, careful
+>> so far, use pape wipes to clean beam
+>> Bharani: cleaning using alcohol would be best, not water 
+
+>> once we have front-view for all cylinder sizes, we can compare ratio of front/side view for different curvature and drop volume 
+>> need image tool to open specific image format & measure (pixel) distances
+
+
+-----------------------------------------
+--------- Wednesday 19. August ----------
+-----------------------------------------
+
+>> New experimental setup
+>> From now on perform experiments (except DAFI) in 108 with Reda
+>> a lot of cleaning and whiping, but now I have a nice spacious place to work and today we will probably get the camera working, so I can start adjusting the camera and take pictures of droplets
+
+
+-----------------------------------------
+---------- Thursday 20. August ----------
+-----------------------------------------
+
+1. Clean and safe all my Github reps. so I can work on Windows 
+
+2. Setup the Ethernet connection to use the high-speed camera using MLink
+
+3. Adjust the experiment and lighting to get best possible pictures

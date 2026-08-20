@@ -1,0 +1,16 @@
+
+# 01_Pierce_Contact-Angle-Sliding
+
+# 02_Gao_Start-Sliding
+
+# 03_Cui_geometry-cylinder
+
+# 04_Pilat_Dynamic-Force
+
+# 05_McHale_Adhesive-Friction
+
+# 06_Li_Kinetic-Friction
+
+# 07_Wang-droplet-impact
+
+# 08_Ye_Impact-force-spreading

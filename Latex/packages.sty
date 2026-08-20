@@ -1,0 +1,93 @@
+% -------------------------------------------------- %
+% ---------------- Import Packages ----------------- %
+% -------------------------------------------------- % 
+
+
+
+
+% ----------------- Font Settings ------------------ %
+
+
+    % allow special charcters (ä, ö, ü, ...)
+\RequirePackage[utf8]{inputenc}
+    % help with special charcters (ä, ö, ü, ...)
+\RequirePackage[T1]{fontenc}   
+    % auto translation (eg.: "figure" --> "Abbildung")
+\RequirePackage[english]{babel}           
+    % bold symbols
+\RequirePackage{bm}
+    % makes captions bold
+\RequirePackage[labelfont=bf]{caption}
+    % colorful comments
+\RequirePackage{xcolor}
+
+
+% ----------------- Mathematics ------------------ %
+
+
+    % general mathematics (amsmath+)
+\RequirePackage{mathtools}    
+    % contractions in Wick's theorem
+\RequirePackage{simpler-wick}
+    % Feynman diagrams
+\RequirePackage[compat=1.1.0]{tikz-feynman}    % \slashed{p}
+\RequirePackage{slashed}
+    % physics unit notation
+\RequirePackage{siunitx}
+\sisetup{
+    separate-uncertainty = false,
+    round-mode = uncertainty,
+    round-precision = 1
+}     
+
+    % unity matrix 
+\RequirePackage{bbm}
+    % bra-c-ket notation & more
+\RequirePackage{physics}
+
+% ------------ Citation & Reference -------------- %
+
+
+\RequirePackage{hyperref}    
+\hypersetup{
+    colorlinks=true,       % False: boxed links; True: colored links
+    linkcolor=blue,       % Color of internal links (sections, equations, figures)
+    citecolor=blue,        % Color of links to bibliography
+    filecolor=blue,        % Color of file links
+    urlcolor=blue          % Color of external website links
+}    
+    % fix hyper-reference issues
+\RequirePackage[all]{hypcap}                
+    % quotation                  
+\RequirePackage[autostyle=true]{csquotes}
+    % bibliography management
+\RequirePackage[backend=biber, style=numeric, sorting=none, maxcitenames=2]{biblatex}   
+    % hyper-reference within document
+
+
+% ------------------ Graphics -------------------- %
+
+
+    % professional table dashes
+\RequirePackage{booktabs}
+    % include graphics
+\RequirePackage{graphicx}                   
+    % figure & table environments
+\RequirePackage{float}    
+    % subfigures & subcaptions
+\RequirePackage{subcaption}    
+    % page settings
+\RequirePackage[a4paper, left=2cm, right=2cm, top=2.5cm]{geometry}
+    % fit graphics with \adjustbox
+\RequirePackage{adjustbox}
+
+% ------------------- Other --------------------- %
+
+
+    % userdefined makros
+\RequirePackage{xparse} 
+    % no indent after figures
+\setlength{\parindent}{0pt}
+    % no numbering of headlines
+%\setcounter{secnumdepth}{0}
+

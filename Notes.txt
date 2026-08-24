@@ -185,3 +185,24 @@
 2. Setup the Ethernet connection to use the high-speed camera using MLink
 
 3. Adjust the experiment and lighting to get best possible pictures
+
+
+
+-----------------------------------------
+----------- Friday 21. August -----------
+-----------------------------------------
+
+>> I performed a few measurements of 2ul and 3ul droplets on 2mm and 4mm cylinders. The analysis is for Monday.
+
+
+-----------------------------------------
+----------- Monday 24. August -----------
+-----------------------------------------
+
+1. Evaluate the contact lengths and write them into Excel
+>> done 
+>> we now have a beautiful excel table with contact line data that is supposed to be read by a Python module for Analysis and plotting
+
+2. Write a Python Program to analyze contact lengths (plotting)
+
+3. Decide what future measurements (const. params, dynmamic params, expectation) make sense 

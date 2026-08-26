@@ -33,23 +33,16 @@
     % automatically tag only a specific line in align*
 \newcommand{\singletag}{\stepcounter{equation}\tag{\theequation}}
 
-    % Imaginary Part
-\renewcommand{\Im}{\text{Im} \,}
 
-    % Real Part
-\renewcommand{\Re}{\text{Re} \,}
-
-    % Identity matrix in x Dimensions
-\newcommand{\id}[1]{\mathbf{1}_{#1}}
-
-    % abbreviation: s_thr 
-\newcommand{\sthr}{s\sub{thr}}
-
-    % symbol for spacial momentum k(s) on-shell evaluated
-\newcommand{\ks}{\mathcal{K}(s)}
-
-    % pole position 
-\newcommand{\spole}{s_*}
-
-    % partial wave amplitude 
-\newcommand{\Mp}{\tilde{\mathcal{M}}}
+    % box to highlight key equations
+\newtcolorbox{keyeq}[1][]{
+    ams equation,
+  colback   =black!6!white,
+  colframe  =black!6!white,
+  boxrule   =0pt,
+  arc       =6pt,           
+  top   =4pt, bottom=4pt, 
+  left  =4pt, right =4pt, 
+  boxsep=0pt,
+  #1
+}

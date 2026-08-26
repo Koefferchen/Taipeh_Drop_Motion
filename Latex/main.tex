@@ -1,25 +1,18 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,a4paper,fleqn]{article}
 
 \input{packages.sty}
 \input{makros.sty}
 \bibliography{references.bib}
 
- 
 
 \begin{document}
-
-    \input{texs/00_titlepage.tex}
-
-    \tableofcontents
-    \newpage
-    \pagenumbering{arabic}
-    
+    \input{texs/00_title.tex}      \begin{multicols}{2}    
     \input{texs/01.tex}  
     \input{texs/02.tex}
     \input{texs/03.tex}
     \input{texs/04.tex}
+    \end{multicols}
 
-    \newpage
     \printbibliography
     \newpage
     \appendix

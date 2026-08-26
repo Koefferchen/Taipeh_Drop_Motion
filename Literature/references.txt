@@ -1,16 +1,24 @@
 
 # 01_Pierce_Contact-Angle-Sliding
+---> https://www.sciencedirect.com/science/article/pii/S0927775707008801
 
 # 02_Gao_Start-Sliding
+---> https://www.nature.com/articles/nphys4305
 
 # 03_Cui_geometry-cylinder
+---> https://pubs.acs.org/langd5/article/41/16/10676/3743749/Geometry-Dependence-of-the-Receding-Angle-of-a
 
 # 04_Pilat_Dynamic-Force
+---> https://pubs.acs.org/langd5/article/28/49/16812/1668604/Dynamic-Measurement-of-the-Force-Required-to-Move
 
 # 05_McHale_Adhesive-Friction
+---> https://journals.aps.org/prl/abstract/10.1103/ljbc-k193
 
 # 06_Li_Kinetic-Friction
+---> https://www.nature.com/articles/s41467-023-40289-8
 
 # 07_Wang-droplet-impact
+---> https://www.sciencedirect.com/science/article/pii/S0021979720307499?via%3Dihub
 
 # 08_Ye_Impact-force-spreading
+---> https://pubs.aip.org/aip/pof/article/38/1/012124/3377823/Impact-force-and-spreading-characteristics-of

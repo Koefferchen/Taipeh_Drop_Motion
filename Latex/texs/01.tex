@@ -1,22 +1,60 @@
 
-\chapter{Introduction}
+\section{Introduction}
+    The onset of liquid droplets on solid surfaces is a phenomenon that is witnessed in every part of our lives and numerous industrial processes. In particular, the application of microfluidic technology has played an ever larger role in the digital high-precision industry. Conversly, the missing consensum on measurement tecniques for surface properties and discrepancies between literature values suggest that the solid-liquid interface is not fully understood yet. \cite{00_Project-Description} \\
+
+    Therefore, this work aims at perform precise, repeatable, and unambiguous measurements of contact parameters in dependence on the surface geometry, wettability, and roughness. Specifically, we measure the contact line of water droplets on cylindrical surfaces and quantify its dependence on the surface curvature $K$, the drop volume $V$, and the choice of the subtraste. \\
+
+    (what has been achieved)
+
+\section{About the Internship}
+
+    The frame of this research project is a six-week internship in the Institute of Applied Mechanics at the National Taiwan University (NTU) in Taipeh, Taiwan. During the project I was integrated into the research of group of professor An-Bang Wang and advised by PhD student Bharanitharan Jambulingan. The week was structured by three group meetings on Monday, Wednesday, and Friday, where we exchanged thoughts on our experiments and discussed new results. I worked in the laboratory from 9:00 to 18:00 except for lunch time, where we would go out with the research group. I really appreciated the matey and cooperative atmosphere as well as all the free time that we could spend together. I learnt a lot about pratical laboratory work, improvisation of solutions, but most of all about the taiwanese culture and the friends I made along the way. Thank you.
+
+\section{Theory}
+
+    When a liquid droplet is placed on a solid surface, its exact geometry generally depends on the choice of liquid and subtrate, the droplet volume, and the substrate geometry. The one-dimensional line, where solid, liquid, and surrounding gas meet, is called the \textbf{triple-phase boundary} or \textbf{contact line}. The inner angle between substrate and droplet surface tangent at the contact line is called the \textbf{contact angle} $\theta$. \red{[figure]} For a given droplet volume $V$, the geometry of the droplet is determined by its contact line and contact angles. \\
+    
+    For a ideal combination of liquid and substrate as portrayed by Young's equation, the \textbf{equilibrium contact angle} $\theta\sub{Y}$ is a characteristic quantity, such that any deformation of the droplet eventually returns to the equilibrium state, where $\theta = \theta\sub{Y}$. \\
+    
+    However, due to the microscopic and molecular structure of solid surfaces, liquid drops experience pinning effects that induce deviations to the equilibrium contact angle $\theta\sub{Y}$, which depend on the history of the droplet: A carefully placed droplet evolves signifiantly larger contact angles than a droplet that was pressed on the surface. The phenomenon is known as \textbf{contact angle hysteresis} $\Delta \theta$ and quantified by the difference in advancing and receding contact angles $\theta\sub{A} - \theta\sub{R}$. \\
+    
+    Place a droplet on a substrate and enlarge the droplet by slowing supplying it with liquid. Due to static forces, the contact line resists the expansion and the contact angle grows. At the critical point, before the contact line finally expands, the contact angle reaches the \textbf{advancing contact angle} $\theta\sub{A}$. Similarly, the \textbf{receding contact angle} $\theta\sub{R}$ is reached at the point where retracting more liquid would make the contact line shrink. The advancing and receding contacts angles measure the surface's repellency, its \enquote{resistance to wetting out}. \\
+
+    Another material property closely related to repellency is drop mobility, the resistance of a surface to drop movement. It is measured by placing a droplet on a flat surface and tilting it until the critical angle, where the drop starts moving. The critical inclination angle, at which macroscopic movement of the droplet emerges, is called the \textbf{sliding angle} $\alpha$. In this maximal inclined state, where the droplet is about to slide, the front contact angle is maximized while the rear contact angle is minimized. Thus, they are called the maximum $\theta\sub{max}$ and minimum contact angles $\theta\sub{min}$. It is noteworthy that despite the close resemblence of $\theta\sub{max} \sim \theta\sub{A}$ and $\theta\sub{min} \sim \theta\sub{R}$ for some liquid-substrate combinations, they are generally different and do not measure the same material property (repellency $\neq$ drop mobility). \\
+
+    Ultimately, to make quantitative predictions about the dynamic behaviour of a droplet on a solid surface, we need to understand the adhesion force $F$ that acts on the solid-liquid interface. The \textbf{static adhesion force} $F\sub{S}$ is the force needed to initiate the movement of a resting droplet over a surface \cite{04_Pilat_Dynamic-Force}:
+    \begin{equation}
+        F\sub{S} = \frac{24}{\pi^3} \gamma D \left(
+            \cos \theta\sub{min} - \cos \theta\sub{max}
+        \right)
+    \end{equation}
+    Here, $\gamma$ denotes the surface tension and $D$ can be approximated by the average diameter of the contact line. 
+
+    Once the droplet is moving at a constant velocity $v$ a smaller \textbf{dynmaic adhesion force} $F\sub{D}(v)$ is needed to keep the droplet moving \cite{04_Pilat_Dynamic-Force}:
+    \begin{equation}
+        F\sub{D} = \frac{24}{\pi^3} \gamma D \left(
+            \cos \theta\sub{R}(v) - \cos \theta\sub{A}(v)
+        \right)
+    \end{equation}
+    Here, $\theta\sub{R}(v)$ and $\theta\sub{R}(v)$ denote the rear and front contact angles of the droplet moving at a constant velocity $v$. 
+    
+    Lastly, we define the contact length $L$ as the diameter of the contact line towards the direction of movement. The contact width $W$ then measures the axis perpendicular to the direction of movement. 
+
+
+\section{Experimental Setup}
+
+    \begin{itemize}
+        \item my setup to measure
+        \item the DAFI
+    \end{itemize}
+
+
+\section{Measurement}
 
 
 
-\chapter{Experimental Setup}
+\section{Results}
 
 
 
-\chapter{Measurement}
-
-
-
-\chapter{Results}
-
-
-
-\chapter{Discussion}
-
-
-
-
+\section{Conclusion}

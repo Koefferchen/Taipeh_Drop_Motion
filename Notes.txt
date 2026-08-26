@@ -206,3 +206,48 @@
 2. Write a Python Program to analyze contact lengths (plotting)
 
 3. Decide what future measurements (const. params, dynmamic params, expectation) make sense 
+
+
+-----------------------------------------
+---------- Tuesday 25. August -----------
+-----------------------------------------
+
+We now have established a measurement procedure for measuring contact lengths:
+
+1. Experimental Procedure
+>> Level high-speed camera with cylinder
+>> move camera and sample to adjust focus
+>> apply droplet and re-adjust focus 
+>> take Image using MLink 
+>> repeat measurement 3 times
+>> (only once) measure gauge pipe 
+
+2. Image Analysis 
+>> Open image in ImageJ
+>> Contact length: immediately measure L / pixel
+>> Contact width: measure x / pixel (angle not necessary)
+>> Gauge cylinder: measure diameter y / pixel 
+>> export data from excel sheet to consecutive
+
+3. Data Analysis
+>> Use the python module "analysis.py" to read data, calculate W and propagate errors
+>> It averages over multiple measurements and creates plots
+
+
+To Do:
+>> The plot does not show error bar caps 
+>> Improve contrast by colouring cylinder ends
+>> Decide on question to be answered 
+>> Make larger scale measurement 
+>> Write Theory Part of Report 
+
+Possible Research Interests:
+
+1. Contact Length as Function of Drop Size 
+>> take only one cylinder 
+>> apply 8 different drop sizes and measure contact lengths 
+>> expectation in spherical symmetric approximation:  L, W \propto V^{1/3} 
+>> if successfull: repeat for other cylinders and materials 
+
+2. Perform DAFI experiment for same droplet / cylinder configurations 
+>> find relation between both experiments regarding static / dynamic force 

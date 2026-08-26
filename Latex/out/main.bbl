@@ -16,5 +16,81 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{00_Project-Description}{unpublished}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Project Description for RISE Internship}
+      \field{year}{2026}
+    \endentry
+    \entry{04_Pilat_Dynamic-Force}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=af73c415e161b9fe9fd9ca86796c549d}{%
+           family={Pilat},
+           familyi={P\bibinitperiod},
+           given={D.\bibnamedelimi W.},
+           giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=91bf3ff4da53eb2a48a41c306a5d8c2d}{%
+           family={Papadopoulos},
+           familyi={P\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=564914a7ddb14001badf54e4541107ce}{%
+           family={Schäffel},
+           familyi={S\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=780fe32edd155965cf4acfb92a3dfad3}{%
+           family={Vollmer},
+           familyi={V\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=40c4fdf4aa83fda3d702e2780f0d32c1}{%
+           family={Berger},
+           familyi={B\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=70302a47ddeaca23eef5e2556e1eabb0}{%
+           family={Butt},
+           familyi={B\bibinitperiod},
+           given={H.-J.},
+           giveni={H\bibinithyphendelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ac82a4b03470c1329ede38151bee7f6e}
+      \strng{fullhash}{b86dd4742ffe8511ad14823f2f02d3c0}
+      \strng{fullhashraw}{b86dd4742ffe8511ad14823f2f02d3c0}
+      \strng{bibnamehash}{ac82a4b03470c1329ede38151bee7f6e}
+      \strng{authorbibnamehash}{ac82a4b03470c1329ede38151bee7f6e}
+      \strng{authornamehash}{ac82a4b03470c1329ede38151bee7f6e}
+      \strng{authorfullhash}{b86dd4742ffe8511ad14823f2f02d3c0}
+      \strng{authorfullhashraw}{b86dd4742ffe8511ad14823f2f02d3c0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0743-7463}
+      \field{journaltitle}{Langmuir}
+      \field{month}{11}
+      \field{number}{49}
+      \field{title}{Dynamic Measurement of the Force Required to Move a Liquid Drop on a Solid Surface}
+      \field{volume}{28}
+      \field{year}{2012}
+      \field{pages}{16812\bibrangedash 16820}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1021/la3041067
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1021/la3041067
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1021/la3041067
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

@@ -48,7 +48,7 @@ def filter_average(array, array_err, ul, mm):
 # --------- data import ---------
 
 
-dataset_01 = np.genfromtxt("../Data/data_week_02.CSV", delimiter=";", skip_header=2)
+dataset_01 = np.genfromtxt("../Data/week2_contact_2-3ul_2-4mm.CSV", delimiter=";", skip_header=2)
 
 volume          = dataset_01[:,2]   # in ul
 volume_err      = 0.01 * volume
@@ -112,4 +112,4 @@ draw_data(ax,
           [2,3], None,
           [width_2ul_4mm, width_3ul_4mm], [width_2ul_4mm_err, width_3ul_4mm_err],
           r"W $(4 mm)$", "D", "violet", 10, 5)
-close_plot(ax, "../Figures/week_02.jpg")
+close_plot(ax, "../Figures/w02_2-4mm.jpg")

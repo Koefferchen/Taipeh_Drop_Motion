@@ -31,7 +31,8 @@ def degree_to_rad(degree):
     return degree/360 * (2*np.pi)
 
 def fitfunc_ID(B, x):
-    return B[0] * x
+    return B[0] * x 
+params_guess = [1]
 
     # average repeated measurement with individual uncertainties
 def weighted_average(y, y_err):
@@ -49,11 +50,15 @@ def filter_average(array, array_err, ul, mm):
 
     # volume of a half sphere
 def volume_to_diameter( volume ):
-    return (6/np.pi**2 * volume*2)**(1/3)
+    return (12*volume / np.pi)**(1/3)
 
     # diameter of a half sphere
 def diameter_to_volume( diameter ):
-    return diameter**3 * np.pi**2 /6 /2
+    return diameter**3 * np.pi /12
+
+def format_uncert( value, error, unit="" ):
+    return f"{ufloat(value,error):.1uS} " + unit
+
 
 red     = "#E76F51"
 orange  = "#F4A261"
@@ -63,7 +68,14 @@ violet  = "#9B5DE5"
 green   = "#55BB50"
 colors  = [red, orange, teal, steel, violet, green]
 
+fmt_len = ".-"
+fmt_wid = "s--"
+siz_wid = 5
+
 load_plotting()
+
+    # the capillary length
+Lc = 2.71 
 
 
 # ----------------------------------------------------
@@ -105,40 +117,40 @@ width, width_err        = W(x_width, x_width_err, diameter, diameter_err)
     # lengths vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$")
 add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(4):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], length[index==i], length_err[index==i],
-        f"$_{i:.0f}$", ".-", colors[i], 10, 0, 2)
-close_plot(ax, "../Figs/w04_02mm_lengths.jpg")
+        volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
+        f"$_{i:.0f}$", fmt_len, colors[i], 10, 0, 2)
+close_plot(ax, "../Figs/w05_02mm_lengths.jpg")
 
     # widths vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Width $W/L_c$")
 add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(4):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], width[index==i], width_err[index==i],
-        f"$_{i:.0f}$", ".-", colors[i], 10, 0, 2)
-close_plot(ax, "../Figs/w04_02mm_widths.jpg")
+        volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
+        f"$_{i:.0f}$", fmt_wid, colors[i], siz_wid, 0, 2)
+close_plot(ax, "../Figs/w05_02mm_widths.jpg")
 
     # both vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ or Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
 add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(4):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], length[index==i], length_err[index==i],
-        None, ".-", colors[i], 10, 0, 2)
+        volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
+        None, fmt_len, colors[i], 10, 0, 2)
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], width[index==i], width_err[index==i],
-        None, ".--", colors[i], 10, 0, 2)
-draw_data(ax, [], None, [], None, "Lengths", ".-", "black", 10, 0, 2)
-draw_data(ax, [], None, [], None, "Widths", ".--", "black", 10, 0, 2)
-close_plot(ax, "../Figs/w04_02mm_both.jpg")
+        volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
+        None, fmt_wid, colors[i], siz_wid, 0, 2)
+draw_data(ax, [], None, [], None, "Lengths", fmt_len, "black", 10, 0, 2)
+draw_data(ax, [], None, [], None, "Widths", fmt_wid, "black", siz_wid, 0, 2)
+close_plot(ax, "../Figs/w05_02mm_both.jpg")
 
 
     # averaging over measurement graphs 
@@ -161,11 +173,11 @@ volume_avg_2mm = np.array(volume_avg)
     # both_avg vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ or Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
 add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_avg_2mm, None, length_avg_2mm, length_avg_err_2mm, "Lengths", ".-", "black", 10, 5, 2)
-draw_data(ax, volume_avg_2mm, None, width_avg_2mm, width_avg_err_2mm, "Widths", ".--", "black", 10, 5, 2)
-close_plot(ax, "../Figs/w04_02mm_both_avg.jpg")
+draw_data(ax, volume_avg_2mm, None, length_avg_2mm/Lc, length_avg_err_2mm/Lc, "Lengths", fmt_len, "black", 10, 5, 2)
+draw_data(ax, volume_avg_2mm, None, width_avg_2mm/Lc, width_avg_err_2mm/Lc, "Widths", fmt_wid, "black", siz_wid, 5, 2)
+close_plot(ax, "../Figs/w05_02mm_both_avg.jpg")
 
 
 
@@ -176,30 +188,30 @@ ratio_err_2mm = ratio_2mm * np.sqrt( (length_avg_err_2mm/length_avg_2mm)**2 + (w
     # ratio vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Aspect Ratio $L/W$")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Aspect Ratio $L/W$")
 add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_2mm, None, ratio_2mm, ratio_err_2mm, "Data", ".-", "black", 10, 5, 2)
-close_plot(ax, "../Figs/w04_02mm_ratio.jpg")
+close_plot(ax, "../Figs/w05_02mm_ratio.jpg")
 
 
 volume_diameter_2mm = volume_to_diameter(volume_avg_2mm)   
 
 
     # linear fit
-params_l, sigmas_l, chi_l, fit_l = fit_model(volume_diameter_2mm, None, length_avg_2mm, length_avg_err_2mm, fitfunc_ID, [1], ROI=None, ROF=None, info=True )
-params_w, sigmas_w, chi_w, fit_w = fit_model(volume_diameter_2mm, None, width_avg_2mm, width_avg_err_2mm, fitfunc_ID, [1], ROI=None, ROF=None, info=True )
+params_l, sigmas_l, chi_l, fit_l = fit_model(volume_diameter_2mm, None, length_avg_2mm, length_avg_err_2mm, fitfunc_ID, params_guess, ROI=None, ROF=None, info=True )
+params_w, sigmas_w, chi_w, fit_w = fit_model(volume_diameter_2mm, None, width_avg_2mm, width_avg_err_2mm, fitfunc_ID, params_guess, ROI=None, ROF=None, info=True )
 
     # both_avg vs volume diameter (fit)
 ax = init_plot()
 draw_grid()
-add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$l")
-draw_text(ax, r"Volume Diameter $(\frac{12 V}{\pi^2})^{1/3}$ / mm", r"Contact Length $L$ or Width $W$ / mm")
+add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$L")
+draw_text(ax, r"Reference Length $L_0(V)$ / mm", r"Contact Length $L$ or Width $W$ / mm")
 add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_diameter_2mm, None, length_avg_2mm, length_avg_err_2mm, "Lengths", ".-", "black", 10, 5, 2)
-draw_data(ax, volume_diameter_2mm, None, width_avg_2mm, width_avg_err_2mm, "Widths", ".--", "black", 10, 5, 2)
-draw_data(ax, *fit_l, f"Length Fit $(\\chi^2 = {chi_l:.4f})$", "-", orange, 0, 0, 4, alpha=0.5)
-draw_data(ax, *fit_w, f"Width Fit $(\\chi^2 = {chi_w:.4f}$)", "-", teal, 0, 0, 4, alpha=0.5)
-close_plot(ax, "../Figs/w04_02mm_both_fit.jpg")
+draw_data(ax, volume_diameter_2mm, None, length_avg_2mm, length_avg_err_2mm, "Lengths", fmt_len, "black", 10, 5, 2)
+draw_data(ax, volume_diameter_2mm, None, width_avg_2mm, width_avg_err_2mm, "Widths", fmt_wid, "black", siz_wid, 5, 2)
+draw_data(ax, *fit_l, r"Fit: $k_L \,\,=$ "+format_uncert(params_l[0],sigmas_l[0]), "-", orange, 0, 0, 4, alpha=0.5)
+draw_data(ax, *fit_w, r"Fit: $k_W =$ "+format_uncert(params_w[0],sigmas_w[0]), "-", teal, 0, 0, 4, alpha=0.5)
+close_plot(ax, "../Figs/w05_02mm_both_fit.jpg")
 
 
 
@@ -242,40 +254,40 @@ width, width_err        = W(x_width, x_width_err, diameter, diameter_err)
     # lengths vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$")
 add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(5):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], length[index==i], length_err[index==i],
-        f"$_{i:.0f}$", ".-", colors[i], 10, 0, 2)
-close_plot(ax, "../Figs/w04_04mm_lengths.jpg")
+        volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
+        f"$_{i:.0f}$", fmt_len, colors[i], 10, 0, 2)
+close_plot(ax, "../Figs/w05_04mm_lengths.jpg")
 
     # widths vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Width $W/L_c$")
 add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(5):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], width[index==i], width_err[index==i],
-        f"$_{i:.0f}$", ".-", colors[i], 10, 0, 2)
-close_plot(ax, "../Figs/w04_04mm_widths.jpg")
+        volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
+        f"$_{i:.0f}$", fmt_wid, colors[i], siz_wid, 0, 2)
+close_plot(ax, "../Figs/w05_04mm_widths.jpg")
 
     # both vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ or Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
 add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(5):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], length[index==i], length_err[index==i],
-        None, ".-", colors[i], 10, 0, 2)
+        volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
+        None, fmt_len, colors[i], 10, 0, 2)
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], width[index==i], width_err[index==i],
-        None, ".--", colors[i], 10, 0, 2)
-draw_data(ax, [], None, [], None, "Lengths", ".-", "black", 10, 0, 2)
-draw_data(ax, [], None, [], None, "Widths", ".--", "black", 10, 0, 2)
-close_plot(ax, "../Figs/w04_04mm_both.jpg")
+        volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
+        None, fmt_wid, colors[i], siz_wid, 0, 2)
+draw_data(ax, [], None, [], None, "Lengths", fmt_len, "black", 10, 0, 2)
+draw_data(ax, [], None, [], None, "Widths", fmt_wid, "black", siz_wid, 0, 2)
+close_plot(ax, "../Figs/w05_04mm_both.jpg")
 
 
     # averaging over measurement graphs 
@@ -298,11 +310,11 @@ volume_avg_4mm = np.array(volume_avg)
     # both_avg vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ or Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
 add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_avg_4mm, None, length_avg_4mm, length_avg_err_4mm, "Lengths", ".-", "black", 10, 5, 2)
-draw_data(ax, volume_avg_4mm, None, width_avg_4mm, width_avg_err_4mm, "Widths", ".--", "black", 10, 5, 2)
-close_plot(ax, "../Figs/w04_04mm_both_avg.jpg")
+draw_data(ax, volume_avg_4mm, None, length_avg_4mm/Lc, length_avg_err_4mm/Lc, "Lengths", fmt_len, "black", 10, 5, 2)
+draw_data(ax, volume_avg_4mm, None, width_avg_4mm/Lc, width_avg_err_4mm/Lc, "Widths", fmt_wid, "black", siz_wid, 5, 2)
+close_plot(ax, "../Figs/w05_04mm_both_avg.jpg")
 
 
 
@@ -313,30 +325,30 @@ ratio_err_4mm = ratio_4mm * np.sqrt( (length_avg_err_4mm/length_avg_4mm)**2 + (w
     # ratio vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Aspect Ratio $L/W$")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Aspect Ratio $L/W$")
 add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_avg_4mm, None, ratio_4mm, ratio_err_4mm, "Data", ".-", "black", 10, 5, 2)
-close_plot(ax, "../Figs/w04_04mm_ratio.jpg")
+draw_data(ax, volume_avg_4mm, None, ratio_4mm, ratio_err_4mm, "Data", fmt_len, "black", 10, 5, 2)
+close_plot(ax, "../Figs/w05_04mm_ratio.jpg")
 
 
 volume_diameter_4mm = volume_to_diameter(volume_avg_4mm)   
 
 
     # linear fit
-params_l, sigmas_l, chi_l, fit_l = fit_model(volume_diameter_4mm, None, length_avg_4mm, length_avg_err_4mm, fitfunc_ID, [1], ROI=(volume_avg_4mm<12), ROF=[1.3, 2.4], info=True )
-params_w, sigmas_w, chi_w, fit_w = fit_model(volume_diameter_4mm, None, width_avg_4mm, width_avg_err_4mm, fitfunc_ID, [1], ROI=(volume_avg_4mm<12), ROF=[1.3, 2.4], info=True )
+params_l, sigmas_l, chi_l, fit_l = fit_model(volume_diameter_4mm, None, length_avg_4mm, length_avg_err_4mm, fitfunc_ID, params_guess, ROI=(volume_avg_4mm<12), ROF=[1.9, 3.5], info=True )
+params_w, sigmas_w, chi_w, fit_w = fit_model(volume_diameter_4mm, None, width_avg_4mm, width_avg_err_4mm, fitfunc_ID, params_guess, ROI=(volume_avg_4mm<12), ROF=[1.9, 3.5], info=True )
 
     # both_avg vs volume diameter (fit)
 ax = init_plot()
 draw_grid()
-add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$l")
-draw_text(ax, r"Volume Diameter $(\frac{12 V}{\pi^2})^{1/3}$ / mm", r"Contact Length $L$ or Width $W$ / mm")
+add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$L")
+draw_text(ax, r"Reference Length $L_0(V)$ / mm", r"Contact Length $L$ or Width $W$ / mm")
 add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_diameter_4mm, None, length_avg_4mm, length_avg_err_4mm, "Lengths", ".-", "black", 10, 5, 2)
-draw_data(ax, volume_diameter_4mm, None, width_avg_4mm, width_avg_err_4mm, "Widths", ".--", "black", 10, 5, 2)
-draw_data(ax, *fit_l, f"Length Fit $(\\chi^2 = {chi_l:.4f})$", "-", orange, 0, 0, 4, alpha=0.5)
-draw_data(ax, *fit_w, f"Width Fit $(\\chi^2 = {chi_w:.4f}$)", "-", teal, 0, 0, 4, alpha=0.5)
-close_plot(ax, "../Figs/w04_04mm_both_fit.jpg")
+draw_data(ax, volume_diameter_4mm, None, length_avg_4mm, length_avg_err_4mm, "Lengths", fmt_len, "black", 10, 5, 2)
+draw_data(ax, volume_diameter_4mm, None, width_avg_4mm, width_avg_err_4mm, "Widths", fmt_wid, "black", siz_wid, 5, 2)
+draw_data(ax, *fit_l, r"Fit: $k_L \,\,=$ "+format_uncert(params_l[0],sigmas_l[0]), "-", orange, 0, 0, 4, alpha=0.5)
+draw_data(ax, *fit_w, r"Fit: $k_W =$ "+format_uncert(params_w[0],sigmas_w[0]), "-", teal, 0, 0, 4, alpha=0.5)
+close_plot(ax, "../Figs/w05_04mm_both_fit.jpg")
 
 
 
@@ -381,40 +393,40 @@ width, width_err        = W(x_width, x_width_err, diameter, diameter_err)
     # lengths vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$")
 add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(6):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], length[index==i], length_err[index==i],
-        f"$_{i:.0f}$", ".-", colors[i], 10, 0, 2)
-close_plot(ax, "../Figs/w04_10mm_lengths.jpg")
+        volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
+        f"$_{i:.0f}$", fmt_len, colors[i], 10, 0, 2)
+close_plot(ax, "../Figs/w05_10mm_lengths.jpg")
 
     # widths vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Width $W/L_c$")
 add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(6):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], width[index==i], width_err[index==i],
-        f"$_{i:.0f}$", ".-", colors[i], 10, 0, 2)
-close_plot(ax, "../Figs/w04_10mm_widths.jpg")
+        volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
+        f"$_{i:.0f}$", fmt_wid, colors[i], siz_wid, 0, 2)
+close_plot(ax, "../Figs/w05_10mm_widths.jpg")
 
     # both vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ or Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
 add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(6):
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], length[index==i], length_err[index==i],
-        None, ".-", colors[i], 10, 0, 2)
+        volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
+        None, fmt_len, colors[i], 10, 0, 2)
     draw_data(ax, 
-        volume[index==i], volume_err[index==i], width[index==i], width_err[index==i],
-        None, ".--", colors[i], 10, 0, 2)
-draw_data(ax, [], None, [], None, "Lengths", ".-", "black", 10, 0, 2)
-draw_data(ax, [], None, [], None, "Widths", ".--", "black", 10, 0, 2)
-close_plot(ax, "../Figs/w04_10mm_both.jpg")
+        volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
+        None, fmt_wid, colors[i], siz_wid, 0, 2)
+draw_data(ax, [], None, [], None, "Lengths", fmt_len, "black", 10, 0, 2)
+draw_data(ax, [], None, [], None, "Widths", fmt_wid, "black", siz_wid, 0, 2)
+close_plot(ax, "../Figs/w05_10mm_both.jpg")
 
 
     # averaging over measurement graphs 
@@ -437,11 +449,11 @@ volume_avg_10mm = np.array(volume_avg)
     # both_avg vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ or Width $W$ / mm")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
 add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_avg_10mm, None, length_avg_10mm, length_avg_err_10mm, "Lengths", ".-", "black", 10, 5, 2)
-draw_data(ax, volume_avg_10mm, None, width_avg_10mm, width_avg_err_10mm, "Widths", ".--", "black", 10, 5, 2)
-close_plot(ax, "../Figs/w04_10mm_both_avg.jpg")
+draw_data(ax, volume_avg_10mm, None, length_avg_10mm/Lc, length_avg_err_10mm/Lc, "Lengths", fmt_len, "black", 10, 5, 2)
+draw_data(ax, volume_avg_10mm, None, width_avg_10mm/Lc, width_avg_err_10mm/Lc, "Widths", fmt_wid, "black", siz_wid, 5, 2)
+close_plot(ax, "../Figs/w05_10mm_both_avg.jpg")
 
 
 ratio_10mm     = length_avg_10mm/width_avg_10mm
@@ -451,30 +463,30 @@ ratio_err_10mm = ratio_10mm * np.sqrt( (length_avg_err_10mm/length_avg_10mm)**2 
     # ratio vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Aspect Ratio $L/W$")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Aspect Ratio $L/W$")
 add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_10mm, None, ratio_10mm, ratio_err_10mm, "Data", ".-", "black", 10, 5, 2)
-close_plot(ax, "../Figs/w04_10mm_ratio.jpg")
+close_plot(ax, "../Figs/w05_10mm_ratio.jpg")
 
 
 volume_diameter_10mm = volume_to_diameter(volume_avg_10mm)   
 
 
     # linear fit
-params_l, sigmas_l, chi_l, fit_l = fit_model(volume_diameter_10mm, None, length_avg_10mm, length_avg_err_10mm, fitfunc_ID, [1], ROI=(volume_avg_10mm<20), ROF=[1.3, 2.8], info=True )
-params_w, sigmas_w, chi_w, fit_w = fit_model(volume_diameter_10mm, None, width_avg_10mm, width_avg_err_10mm, fitfunc_ID, [1], ROI=(volume_avg_10mm<20), ROF=[1.3, 2.8], info=True )
+params_l, sigmas_l, chi_l, fit_l = fit_model(volume_diameter_10mm, None, length_avg_10mm, length_avg_err_10mm, fitfunc_ID, params_guess, ROI=(volume_avg_10mm<20), ROF=[1.9, 4.1], info=True )
+params_w, sigmas_w, chi_w, fit_w = fit_model(volume_diameter_10mm, None, width_avg_10mm, width_avg_err_10mm, fitfunc_ID, params_guess, ROI=(volume_avg_10mm<20), ROF=[1.9, 4.1], info=True )
 
     # both_avg vs volume diameter (fit)
 ax = init_plot()
 draw_grid()
-add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$l")
-draw_text(ax, r"Volume Diameter $(\frac{12 V}{\pi^2})^{1/3}$ / mm", r"Contact Length $L$ or Width $W$ / mm")
+add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$L")
+draw_text(ax, r"Reference Length $L_0(V)$ / mm", r"Contact Length $L$ or Width $W$ / mm")
 add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_diameter_10mm, None, length_avg_10mm, length_avg_err_10mm, "Lengths", ".-", "black", 10, 5, 2)
-draw_data(ax, volume_diameter_10mm, None, width_avg_10mm, width_avg_err_10mm, "Widths", ".--", "black", 10, 5, 2)
-draw_data(ax, *fit_l, f"Length Fit $(\\chi^2 = {chi_l:.4f})$", "-", orange, 0, 0, 4, alpha=0.5)
-draw_data(ax, *fit_w, f"Width Fit $(\\chi^2 = {chi_w:.4f}$)", "-", teal, 0, 0, 4, alpha=0.5)
-close_plot(ax, "../Figs/w04_10mm_both_fit.jpg")
+draw_data(ax, volume_diameter_10mm, None, length_avg_10mm, length_avg_err_10mm, "Lengths", fmt_len, "black", 10, 5, 2)
+draw_data(ax, volume_diameter_10mm, None, width_avg_10mm, width_avg_err_10mm, "Widths", fmt_wid, "black", siz_wid, 5, 2)
+draw_data(ax, *fit_l, r"Fit: $k_L \,\,=$ "+format_uncert(params_l[0],sigmas_l[0]), "-", orange, 0, 0, 4, alpha=0.5)
+draw_data(ax, *fit_w, r"Fit: $k_W =$ "+format_uncert(params_w[0],sigmas_w[0]), "-", teal, 0, 0, 4, alpha=0.5)
+close_plot(ax, "../Figs/w05_10mm_both_fit.jpg")
 
 
 
@@ -490,25 +502,25 @@ close_plot(ax, "../Figs/w04_10mm_both_fit.jpg")
     # ratio vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Aspect Ratio $L/W$")
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Aspect Ratio $L/W$")
 draw_data(ax, volume_avg_2mm, None, ratio_2mm, ratio_err_2mm, "On $2$mm", ".-", green, 10, 5, 2)
 draw_data(ax, volume_avg_4mm, None, ratio_4mm, ratio_err_4mm, "On $4$mm", ".-", teal, 10, 5, 2)
 draw_data(ax, volume_avg_10mm, None, ratio_10mm, ratio_err_10mm, "On $10$mm", ".-", red, 10, 5, 2)
-close_plot(ax, "../Figs/w04_ratios.jpg")
+close_plot(ax, "../Figs/w05_ratios.jpg")
 
 
     # both_avg vs volume
 ax = init_plot()
 draw_grid()
-draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length $L$ or Width $W$ / mm"  )
+draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
 add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_avg_2mm, None, length_avg_2mm, length_avg_err_2mm, "Lengths on $2$mm", ".-", green, 10, 5, 2)
-draw_data(ax, volume_avg_2mm, None, width_avg_2mm, width_avg_err_2mm, "Widths on $2$mm", ".--", green, 10, 5, 2)
-draw_data(ax, volume_avg_4mm, None, length_avg_4mm, length_avg_err_4mm, "Lengths on $4$mm", ".-", teal, 10, 5, 2)
-draw_data(ax, volume_avg_4mm, None, width_avg_4mm, width_avg_err_4mm, "Widths on $4$mm", ".--", teal, 10, 5, 2)
-draw_data(ax, volume_avg_10mm, None, length_avg_10mm, length_avg_err_10mm, "Lengths on $10$mm", ".-", red, 10, 5, 2)
-draw_data(ax, volume_avg_10mm, None, width_avg_10mm, width_avg_err_10mm, "Widths on $10$mm", ".--", red, 10, 5, 2)
-close_plot(ax, "../Figs/w04_both_avg.jpg")
+draw_data(ax, volume_avg_2mm, None, length_avg_2mm/Lc, length_avg_err_2mm/Lc, "Lengths on $2$mm", fmt_len, green, 10, 5, 2)
+draw_data(ax, volume_avg_2mm, None, width_avg_2mm/Lc, width_avg_err_2mm/Lc, "Widths on $2$mm", fmt_wid, green, siz_wid, 5, 2)
+draw_data(ax, volume_avg_4mm, None, length_avg_4mm/Lc, length_avg_err_4mm/Lc, "Lengths on $4$mm", fmt_len, teal, 10, 5, 2)
+draw_data(ax, volume_avg_4mm, None, width_avg_4mm/Lc, width_avg_err_4mm/Lc, "Widths on $4$mm", fmt_wid, teal, siz_wid, 5, 2)
+draw_data(ax, volume_avg_10mm, None, length_avg_10mm/Lc, length_avg_err_10mm/Lc, "Lengths on $10$mm", fmt_len, red, 10, 5, 2)
+draw_data(ax, volume_avg_10mm, None, width_avg_10mm/Lc, width_avg_err_10mm/Lc, "Widths on $10$mm", fmt_wid, red, siz_wid, 5, 2)
+close_plot(ax, "../Figs/w05_both_avg.jpg")
 
 
 
@@ -531,18 +543,17 @@ draw_text(ax, r"Norm. Drop Volume $V$ / $\frac{\pi}{4} D^2$   / mm", r"Aspect Ra
 draw_data(ax, volume_avg_2mm/norm_volume_2mm, None, ratio_2mm, ratio_err_2mm, "On $2$mm", ".-", green, 10, 5, 2)
 draw_data(ax, volume_avg_4mm/norm_volume_4mm, None, ratio_4mm, ratio_err_4mm, "On $4$mm", ".-", teal, 10, 5, 2)
 draw_data(ax, volume_avg_10mm/norm_volume_10mm, None, ratio_10mm, ratio_err_10mm, "On $10$mm", ".-", red, 10, 5, 2)
-close_plot(ax, "../Figs/w04_ratios_norm.jpg")
+close_plot(ax, "../Figs/w05_ratios_norm.jpg")
 
 
     # both_avg vs volume
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Norm. Drop Volume $V$ / $\frac{\pi}{4} D^2$   / mm", r"Norm. Contact Length $L/D$ or Width $W/D$"  )
-add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
-draw_data(ax, volume_avg_2mm/norm_volume_2mm, None, length_avg_2mm/norm_lengths_2mm, length_avg_err_2mm/norm_lengths_2mm, "Lengths on $2$mm", ".-", green, 10, 5, 2)
-draw_data(ax, volume_avg_2mm/norm_volume_2mm, None, width_avg_2mm/norm_lengths_2mm, width_avg_err_2mm/norm_lengths_2mm, "Widths on $2$mm", ".--", green, 10, 5, 2)
-draw_data(ax, volume_avg_4mm/norm_volume_4mm, None, length_avg_4mm/norm_lengths_4mm, length_avg_err_4mm/norm_lengths_4mm, "Lengths on $4$mm", ".-", teal, 10, 5, 2)
-draw_data(ax, volume_avg_4mm/norm_volume_4mm, None, width_avg_4mm/norm_lengths_4mm, width_avg_err_4mm/norm_lengths_4mm, "Widths on $4$mm", ".--", teal, 10, 5, 2)
-draw_data(ax, volume_avg_10mm/norm_volume_10mm, None, length_avg_10mm/norm_lengths_10mm, length_avg_err_10mm/norm_lengths_10mm, "Lengths on $10$mm", ".-", red, 10, 5, 2)
-draw_data(ax, volume_avg_10mm/norm_volume_10mm, None, width_avg_10mm/norm_lengths_10mm, width_avg_err_10mm/norm_lengths_10mm, "Widths on $10$mm", ".--", red, 10, 5, 2)
-close_plot(ax, "../Figs/w04_both_avg_norm.jpg")
+draw_data(ax, volume_avg_2mm/norm_volume_2mm, None, length_avg_2mm/norm_lengths_2mm, length_avg_err_2mm/norm_lengths_2mm, "Lengths on $2$mm", fmt_len, green, 10, 5, 2)
+draw_data(ax, volume_avg_2mm/norm_volume_2mm, None, width_avg_2mm/norm_lengths_2mm, width_avg_err_2mm/norm_lengths_2mm, "Widths on $2$mm", fmt_wid, green, siz_wid, 5, 2)
+draw_data(ax, volume_avg_4mm/norm_volume_4mm, None, length_avg_4mm/norm_lengths_4mm, length_avg_err_4mm/norm_lengths_4mm, "Lengths on $4$mm", fmt_len, teal, 10, 5, 2)
+draw_data(ax, volume_avg_4mm/norm_volume_4mm, None, width_avg_4mm/norm_lengths_4mm, width_avg_err_4mm/norm_lengths_4mm, "Widths on $4$mm", fmt_wid, teal, siz_wid, 5, 2)
+draw_data(ax, volume_avg_10mm/norm_volume_10mm, None, length_avg_10mm/norm_lengths_10mm, length_avg_err_10mm/norm_lengths_10mm, "Lengths on $10$mm", fmt_len, red, 10, 5, 2)
+draw_data(ax, volume_avg_10mm/norm_volume_10mm, None, width_avg_10mm/norm_lengths_10mm, width_avg_err_10mm/norm_lengths_10mm, "Widths on $10$mm", fmt_wid, red, siz_wid, 5, 2)
+close_plot(ax, "../Figs/w05_both_avg_norm.jpg")

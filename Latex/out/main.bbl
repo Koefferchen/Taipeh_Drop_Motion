@@ -90,6 +90,40 @@
       \verb https://doi.org/10.1021/la3041067
       \endverb
     \endentry
+    \entry{09_capillary_length}{incollection}{}{}
+      \name{author}{1}{}{%
+        {{hash=7da93c287db72fc0d4dfc69cac78dc46}{%
+           family={Rapp},
+           familyi={R\bibinitperiod},
+           given={Bastian\bibnamedelima E.},
+           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{7da93c287db72fc0d4dfc69cac78dc46}
+      \strng{fullhash}{7da93c287db72fc0d4dfc69cac78dc46}
+      \strng{fullhashraw}{7da93c287db72fc0d4dfc69cac78dc46}
+      \strng{bibnamehash}{7da93c287db72fc0d4dfc69cac78dc46}
+      \strng{authorbibnamehash}{7da93c287db72fc0d4dfc69cac78dc46}
+      \strng{authornamehash}{7da93c287db72fc0d4dfc69cac78dc46}
+      \strng{authorfullhash}{7da93c287db72fc0d4dfc69cac78dc46}
+      \strng{authorfullhashraw}{7da93c287db72fc0d4dfc69cac78dc46}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Microfluidics: Modeling, Mechanics and Mathematics}
+      \field{chapter}{21}
+      \field{isbn}{978-1-4557-3141-1}
+      \field{title}{Capillarity}
+      \field{year}{2017}
+      \field{pages}{421\bibrangedash 442}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1016/B978-1-4557-3141-1.50021-6
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

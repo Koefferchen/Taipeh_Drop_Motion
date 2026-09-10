@@ -100,7 +100,7 @@ for i in range(5):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], length[index==i], length_err[index==i],
         f"$_{i:.0f}$", ".-", colors[i], 10, 0, 2)
-close_plot(ax, "../Figures/w03_4mm_lengths.jpg")
+close_plot(ax, "../Figs/w03_4mm_lengths.jpg")
 
     # widths vs volume
 ax = init_plot()
@@ -110,7 +110,7 @@ for i in range(5):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], width[index==i], width_err[index==i],
         f"$_{i:.0f}$", ".-", colors[i], 10, 0, 2)
-close_plot(ax, "../Figures/w03_4mm_widths.jpg")
+close_plot(ax, "../Figs/w03_4mm_widths.jpg")
 
     # both vs volume
 ax = init_plot()
@@ -125,7 +125,7 @@ for i in range(5):
         None, ".--", colors[i], 10, 0, 2)
 draw_data(ax, [], None, [], None, "Lengths", ".-", "black", 10, 0, 2)
 draw_data(ax, [], None, [], None, "Widths", ".--", "black", 10, 0, 2)
-close_plot(ax, "../Figures/w03_4mm_both.jpg")
+close_plot(ax, "../Figs/w03_4mm_both.jpg")
 
 
     # averaging over measurement graphs 
@@ -151,7 +151,7 @@ draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$l", r"Contact Length or Width / mm", "Contact Lengths and Widths on $4$mm Cylinder")
 draw_data(ax, volume_avg, None, length_avg, length_avg_err, "Lengths", ".-", "black", 10, 5, 2)
 draw_data(ax, volume_avg, None, width_avg, width_avg_err, "Widths", ".--", "black", 10, 5, 2)
-close_plot(ax, "../Figures/w03_4mm_both_avg.jpg")
+close_plot(ax, "../Figs/w03_4mm_both_avg.jpg")
 
 
 volume_diameter = volume_to_diameter(volume_avg)   
@@ -169,5 +169,5 @@ draw_data(ax, volume_diameter, None, length_avg, length_avg_err, "Lengths", ".-"
 draw_data(ax, volume_diameter, None, width_avg, width_avg_err, "Widths", ".--", "black", 10, 5, 2)
 draw_data(ax, *fit_l, f"Length Fit $(\\chi^2 = {chi_l:.4f})$", "-", orange, 0, 0, 4, alpha=0.5)
 draw_data(ax, *fit_w, f"Width Fit $(\\chi^2 = {chi_w:.4f}$)", "-", teal, 0, 0, 4, alpha=0.5)
-close_plot(ax, "../Figures/w03_4mm_both_fit.jpg")
+close_plot(ax, "../Figs/w03_4mm_both_fit.jpg")
 

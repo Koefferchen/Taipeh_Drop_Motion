@@ -112,4 +112,4 @@ draw_data(ax,
           [2,3], None,
           [width_2ul_4mm, width_3ul_4mm], [width_2ul_4mm_err, width_3ul_4mm_err],
           r"W $(4 mm)$", "D", "violet", 10, 5)
-close_plot(ax, "../Figures/w02_2-4mm.jpg")
+close_plot(ax, "../Figs/w02_2-4mm.jpg")

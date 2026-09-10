@@ -12,49 +12,69 @@
 
 \section{Theory}
 
-    When a liquid droplet is placed on a solid surface, its exact geometry generally depends on the choice of liquid and subtrate, the droplet volume, and the substrate geometry. The one-dimensional line, where solid, liquid, and surrounding gas meet, is called the \textbf{triple-phase boundary} or \textbf{contact line}. The inner angle between substrate and droplet surface tangent at the contact line is called the \textbf{contact angle} $\theta$. \red{[figure]} For a given droplet volume $V$, the geometry of the droplet is determined by its contact line and contact angles. \\
+    When a liquid droplet is placed on a solid surface, its exact geometry generally depends on the choice of liquid and subtrate, the droplet volume, and the substrate geometry. The one-dimensional line, where solid, liquid, and surrounding gas meet, is called the \textbf{triple-phase boundary} or \textbf{contact line}. The inner angle between substrate and droplet surface tangent at the contact line is called the \textbf{contact angle} $\theta$ (\cref{fig:Sketch_Contact-Line}). For a given droplet volume $V$, the geometry of the droplet is determined by its contact line and contact angles. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{../Figs/Sketch_Contact-Line.jpeg}
+        \caption{Sketch of applied droplet with contact angle $\theta$ and contact length $L$.}
+        \label{fig:Sketch_Contact-Line}
+    \end{figure}
+    For an ideal combination of liquid and substrate as portrayed by Young's equation, the \textbf{equilibrium contact angle} $\theta\sub{Y}$ is a characteristic quantity, such that any deformation of the droplet eventually returns to the equilibrium state, where $\theta = \theta\sub{Y}$. \\
     
-    For a ideal combination of liquid and substrate as portrayed by Young's equation, the \textbf{equilibrium contact angle} $\theta\sub{Y}$ is a characteristic quantity, such that any deformation of the droplet eventually returns to the equilibrium state, where $\theta = \theta\sub{Y}$. \\
-    
-    However, due to the microscopic and molecular structure of solid surfaces, liquid drops experience pinning effects that induce deviations to the equilibrium contact angle $\theta\sub{Y}$, which depend on the history of the droplet: A carefully placed droplet evolves signifiantly larger contact angles than a droplet that was pressed on the surface. The phenomenon is known as \textbf{contact angle hysteresis} $\Delta \theta$ and quantified by the difference in advancing and receding contact angles $\theta\sub{A} - \theta\sub{R}$. \\
-    
-    Place a droplet on a substrate and enlarge the droplet by slowing supplying it with liquid. Due to static forces, the contact line resists the expansion and the contact angle grows. At the critical point, before the contact line finally expands, the contact angle reaches the \textbf{advancing contact angle} $\theta\sub{A}$. Similarly, the \textbf{receding contact angle} $\theta\sub{R}$ is reached at the point where retracting more liquid would make the contact line shrink. The advancing and receding contacts angles measure the surface's repellency, its \enquote{resistance to wetting out}. \\
-
-    Another material property closely related to repellency is drop mobility, the resistance of a surface to drop movement. It is measured by placing a droplet on a flat surface and tilting it until the critical angle, where the drop starts moving. The critical inclination angle, at which macroscopic movement of the droplet emerges, is called the \textbf{sliding angle} $\alpha$. In this maximal inclined state, where the droplet is about to slide, the front contact angle is maximized while the rear contact angle is minimized. Thus, they are called the maximum $\theta\sub{max}$ and minimum contact angles $\theta\sub{min}$. It is noteworthy that despite the close resemblence of $\theta\sub{max} \sim \theta\sub{A}$ and $\theta\sub{min} \sim \theta\sub{R}$ for some liquid-substrate combinations, they are generally different and do not measure the same material property (repellency $\neq$ drop mobility). \\
+    However, due to the microscopic and molecular structure of solid surfaces, liquid drops experience pinning effects that induce deviations to the equilibrium contact angle $\theta\sub{Y}$, which depend on the history of the droplet: A carefully placed droplet evolves signifiantly larger contact angles than a droplet that was pressed on the surface. The phenomenon is known as \textbf{contact angle hysteresis} $\Delta \theta$ and quantified by the difference in advancing and receding contact angles $\theta\sub{A} - \theta\sub{R}$ (\cref{fig:Sketch_adv-rec-contact-angles}). 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{../Figs/Sketch_adv-rec-contact-angles.jpeg}
+        \caption{Sketch for measurment of $\theta\sub{R}$ (left) and $\theta\sub{A}$ (right) for a given droplet volume $V$.}
+        \label{fig:Sketch_adv-rec-contact-angles}
+    \end{figure}
+    Place a droplet on a substrate and enlarge the droplet by slowing supplying it with liquid. Due to static forces, the contact line resists the expansion and the contact angle grows. At the critical point, before the contact line finally expands, the contact angle reaches the \textbf{advancing contact angle} $\theta\sub{A}$ (\cref{fig:Sketch_adv-rec-contact-angles}, right). Similarly, the \textbf{receding contact angle} $\theta\sub{R}$ is reached at the point where retracting more liquid would make the contact line shrink (\cref{fig:Sketch_adv-rec-contact-angles}, left). The advancing and receding contacts angles measure the surface's repellency, its \enquote{resistance to wetting out}. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.65\linewidth]{../Figs/Sketch_Sliding-Angle.jpeg}
+        \caption{Sketch of the sliding-angle experiment with sliding angle $\alpha$ and contact angles  $\theta\sub{max}$ \&  $\theta\sub{min}$.}
+        \label{fig:Sketch_Sliding-Angle}
+    \end{figure}
+    Another material property closely related to repellency is drop mobility, the resistance of a surface to drop movement. It is measured by placing a droplet on a flat surface and tilting it until the critical angle, where the drop starts moving (\cref{fig:Sketch_Sliding-Angle}). The critical inclination angle, at which macroscopic movement of the droplet emerges, is called the \textbf{sliding angle} $\alpha$. In this maximal inclined state, where the droplet is about to slide, the front contact angle is maximized while the rear contact angle is minimized. Thus, they are called the maximum $\theta\sub{max}$ and minimum contact angles $\theta\sub{min}$. It is noteworthy that despite the close resemblence of $\theta\sub{max} \sim \theta\sub{A}$ and $\theta\sub{min} \sim \theta\sub{R}$ for some liquid-substrate combinations, they are generally different and do not measure the same material property (repellency $\neq$ drop mobility). \\
 
     Ultimately, to make quantitative predictions about the dynamic behaviour of a droplet on a solid surface, we need to understand the adhesion force $F$ that acts on the solid-liquid interface. The \textbf{static adhesion force} $F\sub{S}$ is the force needed to initiate the movement of a resting droplet over a surface \cite{04_Pilat_Dynamic-Force}:
     \begin{equation}
-        F\sub{S} = \frac{24}{\pi^3} \gamma D \left(
+        F\sub{S} = \frac{24}{\pi^3} \gamma d \left(
             \cos \theta\sub{min} - \cos \theta\sub{max}
         \right)
     \end{equation}
-    Here, $\gamma$ denotes the surface tension and $D$ can be approximated by the average diameter of the contact line. 
+    Here, $\gamma$ denotes the surface tension and $d$ can be approximated by the average diameter of the contact line. 
 
-    Once the droplet is moving at a constant velocity $v$ a smaller \textbf{dynmaic adhesion force} $F\sub{D}(v)$ is needed to keep the droplet moving \cite{04_Pilat_Dynamic-Force}:
+    Once the droplet is moving at a constant velocity $v$ a smaller \textbf{dynamic adhesion force} $F\sub{D}(v)$ is needed to keep the droplet moving \cite{04_Pilat_Dynamic-Force}:
     \begin{equation}
-        F\sub{D} = \frac{24}{\pi^3} \gamma D \left(
+        F\sub{D} = \frac{24}{\pi^3} \gamma d \left(
             \cos \theta\sub{R}(v) - \cos \theta\sub{A}(v)
         \right)
     \end{equation}
-    Here, $\theta\sub{R}(v)$ and $\theta\sub{R}(v)$ denote the rear and front contact angles of the droplet moving at a constant velocity $v$. 
-    
-    Lastly, we define the contact length $L$ as the diameter of the contact line towards the direction of movement. The contact width $W$ then measures the axis perpendicular to the direction of movement. 
+    Here, $\theta\sub{R}(v)$ and $\theta\sub{R}(v)$ denote the rear and front contact angles of the droplet moving at a constant velocity $v$. \\
+
+    As initially stated, this work will investigate the influence of substrate geometry. The simplest adaption we can make here is therefore the use of a cylindrical substrate with diameter $D$ instead of a flat surface $(D \to \infty)$. A droplet placed on cylinder has two axes of symmetry with different contact lengths. In the following, we define these contact lengths via the cylinder axis as $L$ and $W$ as portrayed in \cref{fig:Sketch_Sliding-Angle}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{../Figs/Sketch_Cylinder.jpeg}
+        \caption{Definition of the perpendicular contact lengths $L$ \& $W$ on a cylinder with diameter $D$. In practice the distance $x$ is measured to calculate $W$.}
+        \label{fig:Sketch_Cylinder}
+    \end{figure}
+    Notice that, while $L$ describes a straight line, $W$ wraps around the cylinder and cannot be accurately measured straight away. For that reason, we measure the straight distance $x$ instead (see \cref{fig:Sketch_Cylinder}), such that
+    \begin{align}
+        W = D \cdot \arcsin{ \left(\frac{x}{D} \right)}
+    \end{align}
+    Furhtermore, we need a ruler to compare droplet volumes $V$ to measured contact lengths $L$ and contact widths $W$. As such we define the \textbf{reference contact length} $L_0(V)$ as the diameter of a half sphere with volume $V$:
+    \begin{equation}
+        L_0(V) = \sqrt[3]{12 \cdot V / \pi}
+    \end{equation}
+    Droplets with high contact length $L/L_0 < 1$ for their volume $V$ are \enquote{flattened}, while droplets with smaller contact lenghts $L/L_0 > 1$ are \enquote{rounded}. We hypothesize the proportionality 
+    \begin{align} \label{eq:L_and_W_against_L0}
+        L &= k_L \cdot L_0(V) \\
+        W &= k_W \cdot L_0(V)
+    \end{align}
+    where $k$ is constant with respect to the droplet volume $V$. By measuring $k$ on cylinders of different diameters $D$, we hope to find line shapes $k_L(D)$ and $k_W(D)$ that uniquely characterize substrate-liquid combinations. \\
+
+    Lastly, we consider the \textbf{capillary length} $L_c$ as the characteristic length where the two competing forces on a droplet equalize: Below the capillary length $(L/L_c < 1)$ surface tension dominates and pulls the droplet together to minimize surface energy. Above the capillary length $(L/L_c > 1)$, gravity dominates and deforms droplets to minimize potential energy. With $L_c \approx \SI{2.71}{\milli\meter}$ for the water-air interface \cite{09_capillary_length}, the experiments investigate this critical region in between.
 
 
-\section{Experimental Setup}
-
-    \begin{itemize}
-        \item my setup to measure
-        \item the DAFI
-    \end{itemize}
-
-
-\section{Measurement}
-
-
-
-\section{Results}
-
-
-
-\section{Conclusion}

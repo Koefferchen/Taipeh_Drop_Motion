@@ -56,7 +56,7 @@ def diameter_to_volume( diameter ):
 # --------- data import ---------
 
 
-dataset_01 = np.genfromtxt("../Data/week3_contact_2-12ul_4mm.CSV", delimiter=";", skip_header=2)
+dataset_01 = np.genfromtxt("../Data/week3_PMMA_2-12ul_4mm.CSV", delimiter=";", skip_header=2)
 
 
 index           = dataset_01[:,0]

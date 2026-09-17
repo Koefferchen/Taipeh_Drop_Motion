@@ -75,7 +75,7 @@ load_plotting()
 # --------- data import ---------
 
 
-dataset_2mm = np.genfromtxt("../Data/week4_contact_2-3ul_2mm.CSV", delimiter=";", skip_header=2)
+dataset_2mm = np.genfromtxt("../Data/week4_PMMA_2-3ul_2mm.CSV", delimiter=";", skip_header=2)
 
 index           = dataset_2mm[:,0]
 
@@ -212,7 +212,7 @@ close_plot(ax, "../Figs/w04_02mm_both_fit.jpg")
 # --------- data import ---------
 
 
-dataset_4mm = np.genfromtxt("../Data/week3_contact_2-12ul_4mm.CSV", delimiter=";", skip_header=2)
+dataset_4mm = np.genfromtxt("../Data/week3_PMMA_2-12ul_4mm.CSV", delimiter=";", skip_header=2)
 
 
 index           = dataset_4mm[:,0]
@@ -351,7 +351,7 @@ close_plot(ax, "../Figs/w04_04mm_both_fit.jpg")
 
 
 
-dataset_10mm = np.genfromtxt("../Data/week4_contact_2-30ul_10mm.CSV", delimiter=";", skip_header=2)
+dataset_10mm = np.genfromtxt("../Data/week4_PMMA_2-30ul_10mm.CSV", delimiter=";", skip_header=2)
 
 
 index           = dataset_10mm[:,0]

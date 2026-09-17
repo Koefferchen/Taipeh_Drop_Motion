@@ -1,0 +1,20 @@
+28. August - Week 03
+
+
+1. Measurement Tecnique:
+
+>> apply a 2ul droplet 
+>> take photo
+>> increment by 2ul using pipette (still same droplet)
+>> repeat for V in (2ul, 4ul, 6ul, 8ul, 10ul, 12ul)
+>> repeat the whole cycle 5 times (to average)
+
+2. Observations:
+
+>> 12ul often were unstable and fell off. Maybe leave these measuremens out.
+>> often times the droplet would tend to one or the other side
+>> maybe need more accurate drop placement tecnique or practice
+>> for front measurements, droplets were influenced by the end of the cylinder
+>> the cylinders are painted black at the *back* side which increases contrast
+>> next week evaluate
+>> format 484 x 480, 250 shutter (I think) and 50 fps

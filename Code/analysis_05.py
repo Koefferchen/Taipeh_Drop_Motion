@@ -66,7 +66,8 @@ teal    = "#2A9D8F"
 steel   = "#264653"
 violet  = "#9B5DE5"
 green   = "#55BB50"
-colors  = [red, orange, teal, steel, violet, green]
+pink    = "#D7308F"
+colors  = [red, orange, teal, steel, violet, green, pink]
 
 fmt_len = ".-"
 fmt_wid = "s--"
@@ -79,7 +80,7 @@ Lc = 2.71
 
 
 # ----------------------------------------------------
-# ----------------------- 2mm ------------------------
+# -------------------- 2mm PMMMA ---------------------
 # ----------------------------------------------------
 
 
@@ -87,7 +88,7 @@ Lc = 2.71
 # --------- data import ---------
 
 
-dataset_2mm = np.genfromtxt("../Data/week4_contact_2-3ul_2mm.CSV", delimiter=";", skip_header=2)
+dataset_2mm = np.genfromtxt("../Data/week4_PMMA_2-3ul_2mm.CSV", delimiter=";", skip_header=2)
 
 index           = dataset_2mm[:,0]
 
@@ -118,7 +119,7 @@ width, width_err        = W(x_width, x_width_err, diameter, diameter_err)
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$")
-add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$2$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(4):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
@@ -129,7 +130,7 @@ close_plot(ax, "../Figs/w05_02mm_lengths.jpg")
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Width $W/L_c$")
-add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$2$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(4):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
@@ -140,7 +141,7 @@ close_plot(ax, "../Figs/w05_02mm_widths.jpg")
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
-add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$2$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(4):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
@@ -174,7 +175,7 @@ volume_avg_2mm = np.array(volume_avg)
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
-add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$2$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_2mm, None, length_avg_2mm/Lc, length_avg_err_2mm/Lc, "Lengths", fmt_len, "black", 10, 5, 2)
 draw_data(ax, volume_avg_2mm, None, width_avg_2mm/Lc, width_avg_err_2mm/Lc, "Widths", fmt_wid, "black", siz_wid, 5, 2)
 close_plot(ax, "../Figs/w05_02mm_both_avg.jpg")
@@ -189,7 +190,7 @@ ratio_err_2mm = ratio_2mm * np.sqrt( (length_avg_err_2mm/length_avg_2mm)**2 + (w
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Aspect Ratio $L/W$")
-add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$2$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_2mm, None, ratio_2mm, ratio_err_2mm, "Data", ".-", "black", 10, 5, 2)
 close_plot(ax, "../Figs/w05_02mm_ratio.jpg")
 
@@ -206,7 +207,7 @@ ax = init_plot()
 draw_grid()
 add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$L")
 draw_text(ax, r"Reference Length $L_0(V)$ / mm", r"Contact Length $L$ or Width $W$ / mm")
-add_textbox(ax, "$2$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$2$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_diameter_2mm, None, length_avg_2mm, length_avg_err_2mm, "Lengths", fmt_len, "black", 10, 5, 2)
 draw_data(ax, volume_diameter_2mm, None, width_avg_2mm, width_avg_err_2mm, "Widths", fmt_wid, "black", siz_wid, 5, 2)
 draw_data(ax, *fit_l, r"Fit: $k_L \,\,=$ "+format_uncert(params_l[0],sigmas_l[0]), "-", orange, 0, 0, 4, alpha=0.5)
@@ -217,14 +218,15 @@ close_plot(ax, "../Figs/w05_02mm_both_fit.jpg")
 
 
 # ----------------------------------------------------
-# ----------------------- 4mm ------------------------
+# -------------------- 4mm PMMMA ---------------------
 # ----------------------------------------------------
+
 
 
 # --------- data import ---------
 
 
-dataset_4mm = np.genfromtxt("../Data/week3_contact_2-12ul_4mm.CSV", delimiter=";", skip_header=2)
+dataset_4mm = np.genfromtxt("../Data/week3_PMMA_2-12ul_4mm.CSV", delimiter=";", skip_header=2)
 
 
 index           = dataset_4mm[:,0]
@@ -255,7 +257,7 @@ width, width_err        = W(x_width, x_width_err, diameter, diameter_err)
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$")
-add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$4$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(5):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
@@ -266,7 +268,7 @@ close_plot(ax, "../Figs/w05_04mm_lengths.jpg")
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Width $W/L_c$")
-add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$4$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(5):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
@@ -277,7 +279,7 @@ close_plot(ax, "../Figs/w05_04mm_widths.jpg")
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
-add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$4$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(5):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
@@ -311,7 +313,7 @@ volume_avg_4mm = np.array(volume_avg)
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
-add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$4$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_4mm, None, length_avg_4mm/Lc, length_avg_err_4mm/Lc, "Lengths", fmt_len, "black", 10, 5, 2)
 draw_data(ax, volume_avg_4mm, None, width_avg_4mm/Lc, width_avg_err_4mm/Lc, "Widths", fmt_wid, "black", siz_wid, 5, 2)
 close_plot(ax, "../Figs/w05_04mm_both_avg.jpg")
@@ -326,7 +328,7 @@ ratio_err_4mm = ratio_4mm * np.sqrt( (length_avg_err_4mm/length_avg_4mm)**2 + (w
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Aspect Ratio $L/W$")
-add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$4$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_4mm, None, ratio_4mm, ratio_err_4mm, "Data", fmt_len, "black", 10, 5, 2)
 close_plot(ax, "../Figs/w05_04mm_ratio.jpg")
 
@@ -343,7 +345,7 @@ ax = init_plot()
 draw_grid()
 add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$L")
 draw_text(ax, r"Reference Length $L_0(V)$ / mm", r"Contact Length $L$ or Width $W$ / mm")
-add_textbox(ax, "$4$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$4$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_diameter_4mm, None, length_avg_4mm, length_avg_err_4mm, "Lengths", fmt_len, "black", 10, 5, 2)
 draw_data(ax, volume_diameter_4mm, None, width_avg_4mm, width_avg_err_4mm, "Widths", fmt_wid, "black", siz_wid, 5, 2)
 draw_data(ax, *fit_l, r"Fit: $k_L \,\,=$ "+format_uncert(params_l[0],sigmas_l[0]), "-", orange, 0, 0, 4, alpha=0.5)
@@ -355,7 +357,7 @@ close_plot(ax, "../Figs/w05_04mm_both_fit.jpg")
 
 
 # ----------------------------------------------------
-# ----------------------- 10mm -----------------------
+# ------------------- 10mm PMMMA ---------------------
 # ----------------------------------------------------
 
 
@@ -363,7 +365,8 @@ close_plot(ax, "../Figs/w05_04mm_both_fit.jpg")
 
 
 
-dataset_10mm = np.genfromtxt("../Data/week4_contact_2-30ul_10mm.CSV", delimiter=";", skip_header=2)
+
+dataset_10mm = np.genfromtxt("../Data/week4_PMMA_2-30ul_10mm.CSV", delimiter=";", skip_header=2)
 
 
 index           = dataset_10mm[:,0]
@@ -394,7 +397,7 @@ width, width_err        = W(x_width, x_width_err, diameter, diameter_err)
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$")
-add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$10$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(6):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
@@ -405,7 +408,7 @@ close_plot(ax, "../Figs/w05_10mm_lengths.jpg")
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Width $W/L_c$")
-add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$10$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(6):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], width[index==i]/Lc, width_err[index==i]/Lc,
@@ -416,7 +419,7 @@ close_plot(ax, "../Figs/w05_10mm_widths.jpg")
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
-add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$10$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 for i in range(6):
     draw_data(ax, 
         volume[index==i], volume_err[index==i], length[index==i]/Lc, length_err[index==i]/Lc,
@@ -450,7 +453,7 @@ volume_avg_10mm = np.array(volume_avg)
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
-add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$10$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_10mm, None, length_avg_10mm/Lc, length_avg_err_10mm/Lc, "Lengths", fmt_len, "black", 10, 5, 2)
 draw_data(ax, volume_avg_10mm, None, width_avg_10mm/Lc, width_avg_err_10mm/Lc, "Widths", fmt_wid, "black", siz_wid, 5, 2)
 close_plot(ax, "../Figs/w05_10mm_both_avg.jpg")
@@ -464,7 +467,7 @@ ratio_err_10mm = ratio_10mm * np.sqrt( (length_avg_err_10mm/length_avg_10mm)**2 
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Aspect Ratio $L/W$")
-add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$10$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_10mm, None, ratio_10mm, ratio_err_10mm, "Data", ".-", "black", 10, 5, 2)
 close_plot(ax, "../Figs/w05_10mm_ratio.jpg")
 
@@ -481,7 +484,7 @@ ax = init_plot()
 draw_grid()
 add_second_axis(ax, diameter_to_volume, volume_to_diameter, r"Volume V / $\mu$L")
 draw_text(ax, r"Reference Length $L_0(V)$ / mm", r"Contact Length $L$ or Width $W$ / mm")
-add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$10$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_diameter_10mm, None, length_avg_10mm, length_avg_err_10mm, "Lengths", fmt_len, "black", 10, 5, 2)
 draw_data(ax, volume_diameter_10mm, None, width_avg_10mm, width_avg_err_10mm, "Widths", fmt_wid, "black", siz_wid, 5, 2)
 draw_data(ax, *fit_l, r"Fit: $k_L \,\,=$ "+format_uncert(params_l[0],sigmas_l[0]), "-", orange, 0, 0, 4, alpha=0.5)
@@ -493,8 +496,10 @@ close_plot(ax, "../Figs/w05_10mm_both_fit.jpg")
 
 
 
+# ----------------------------------------------------
+# -------------------- Comparison ---------------------
+# ----------------------------------------------------
 
-# --------- 2mm vs 4mm vs 10mm ---------
 
 
 
@@ -513,7 +518,7 @@ close_plot(ax, "../Figs/w05_ratios.jpg")
 ax = init_plot()
 draw_grid()
 draw_text(ax, r"Drop Volume $V$ / $\mu$L", r"Contact Length $L/L_c$ or Width $W/L_c$")
-add_textbox(ax, "$10$mm Cylinder", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
+add_textbox(ax, "$10$mm Cylinder (PMMA)", [0.97, 0.03], 12, "right", "bottom", draw_box=True)
 draw_data(ax, volume_avg_2mm, None, length_avg_2mm/Lc, length_avg_err_2mm/Lc, "Lengths on $2$mm", fmt_len, green, 10, 5, 2)
 draw_data(ax, volume_avg_2mm, None, width_avg_2mm/Lc, width_avg_err_2mm/Lc, "Widths on $2$mm", fmt_wid, green, siz_wid, 5, 2)
 draw_data(ax, volume_avg_4mm, None, length_avg_4mm/Lc, length_avg_err_4mm/Lc, "Lengths on $4$mm", fmt_len, teal, 10, 5, 2)

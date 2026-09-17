@@ -1,18 +1,18 @@
 
 \section{Introduction}
-    The onset of liquid droplets on solid surfaces is a phenomenon that is witnessed in every part of our lives and numerous industrial processes. In particular, the application of microfluidic technology has played an ever larger role in the digital high-precision industry. Conversly, the missing consensum on measurement tecniques for surface properties and discrepancies between literature values suggest that the solid-liquid interface is not fully understood yet. \cite{00_Project-Description} \\
+    The onset of liquid droplets on solid surfaces is a phenomenon that is witnessed in every part of our lives and numerous industrial processes. In particular, the application of microfluidic technology has played an ever-larger role in the digital high-precision industry. Conversely, the missing consensus on measurement techniques for surface properties and discrepancies between literature values suggest that the solid-liquid interface is not fully understood yet. \cite{00_Project-Description} \\
 
-    Therefore, this work aims at perform precise, repeatable, and unambiguous measurements of contact parameters in dependence on the surface geometry, wettability, and roughness. Specifically, we measure the contact line of water droplets on cylindrical surfaces and quantify its dependence on the surface curvature $K$, the drop volume $V$, and the choice of the subtraste. \\
+    Therefore, this work aims to perform precise, repeatable, and unambiguous measurements of contact parameters depending on the surface geometry, wettability, and roughness. Specifically, we measure the contact line of water droplets on cylindrical surfaces and quantify its dependence on the cylinder diameter $D$, the drop volume $V$, and the choice of the substrate. \\
 
-    (what has been achieved)
 
 \section{About the Internship}
 
-    The frame of this research project is a six-week internship in the Institute of Applied Mechanics at the National Taiwan University (NTU) in Taipeh, Taiwan. During the project I was integrated into the research of group of professor An-Bang Wang and advised by PhD student Bharanitharan Jambulingan. The week was structured by three group meetings on Monday, Wednesday, and Friday, where we exchanged thoughts on our experiments and discussed new results. I worked in the laboratory from 9:00 to 18:00 except for lunch time, where we would go out with the research group. I really appreciated the matey and cooperative atmosphere as well as all the free time that we could spend together. I learnt a lot about pratical laboratory work, improvisation of solutions, but most of all about the taiwanese culture and the friends I made along the way. Thank you.
+    The frame of this research project is a six-week internship in the Institute of Applied Mechanics at the National Taiwan University (NTU) in Taipei, Taiwan. During the project I was integrated into the research group of Professor An-Bang Wang and advised by PhD student Bharanitharan Jambulingan. The week was structured by three group meetings on Monday, Wednesday, and Friday, where we exchanged thoughts on our experiments and discussed new results. I worked in the laboratory from 9:00 to 18:00 except for lunchtime, where we would go out with the research group. I really appreciated the matey and cooperative atmosphere as well as all the free time that we could spend together. I learnt a lot about practical laboratory work, improvising solutions, but most of all about the Taiwanese culture and the friends I made along the way. Thank you.
 
 \section{Theory}
+    \label{sec:theory}
 
-    When a liquid droplet is placed on a solid surface, its exact geometry generally depends on the choice of liquid and subtrate, the droplet volume, and the substrate geometry. The one-dimensional line, where solid, liquid, and surrounding gas meet, is called the \textbf{triple-phase boundary} or \textbf{contact line}. The inner angle between substrate and droplet surface tangent at the contact line is called the \textbf{contact angle} $\theta$ (\cref{fig:Sketch_Contact-Line}). For a given droplet volume $V$, the geometry of the droplet is determined by its contact line and contact angles. 
+    When a liquid droplet is placed on a solid surface, its exact geometry generally depends on the choice of liquid and substrate, the droplet volume, and the substrate geometry. The one-dimensional line, where solid, liquid, and surrounding gas meet, is called the \textbf{triple-phase boundary} or \textbf{contact line}. The inner angle between substrate and droplet surface tangent at the contact line is called the \textbf{contact angle} $\theta$ (\cref{fig:Sketch_Contact-Line}). For a given droplet volume $V$, the geometry of the droplet is determined by its contact line and contact angles. 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.7\linewidth]{../Figs/Sketch_Contact-Line.jpeg}
@@ -25,10 +25,10 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../Figs/Sketch_adv-rec-contact-angles.jpeg}
-        \caption{Sketch for measurment of $\theta\sub{R}$ (left) and $\theta\sub{A}$ (right) for a given droplet volume $V$.}
+        \caption{Sketch for measurement of $\theta\sub{R}$ (left) and $\theta\sub{A}$ (right) for a given droplet volume $V$.}
         \label{fig:Sketch_adv-rec-contact-angles}
     \end{figure}
-    Place a droplet on a substrate and enlarge the droplet by slowing supplying it with liquid. Due to static forces, the contact line resists the expansion and the contact angle grows. At the critical point, before the contact line finally expands, the contact angle reaches the \textbf{advancing contact angle} $\theta\sub{A}$ (\cref{fig:Sketch_adv-rec-contact-angles}, right). Similarly, the \textbf{receding contact angle} $\theta\sub{R}$ is reached at the point where retracting more liquid would make the contact line shrink (\cref{fig:Sketch_adv-rec-contact-angles}, left). The advancing and receding contacts angles measure the surface's repellency, its \enquote{resistance to wetting out}. 
+    Place a droplet on a substrate and enlarge the droplet by slowly supplying it with liquid. Due to static forces, the contact line resists the expansion and the contact angle grows. At the critical point, before the contact line finally expands, the contact angle reaches the \textbf{advancing contact angle} $\theta\sub{A}$ (\cref{fig:Sketch_adv-rec-contact-angles}, right). Similarly, the \textbf{receding contact angle} $\theta\sub{R}$ is reached at the point where retracting more liquid would make the contact line shrink (\cref{fig:Sketch_adv-rec-contact-angles}, left). The advancing and receding contact angles measure the surface's repellency, its \enquote{resistance to wetting out}. 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.65\linewidth]{../Figs/Sketch_Sliding-Angle.jpeg}
@@ -51,24 +51,24 @@
             \cos \theta\sub{R}(v) - \cos \theta\sub{A}(v)
         \right)
     \end{equation}
-    Here, $\theta\sub{R}(v)$ and $\theta\sub{R}(v)$ denote the rear and front contact angles of the droplet moving at a constant velocity $v$. \\
+    Here, $\theta\sub{R}(v)$ and $\theta\sub{A}(v)$ denote the rear and front contact angles of the droplet moving at a constant velocity $v$. \\
 
-    As initially stated, this work will investigate the influence of substrate geometry. The simplest adaption we can make here is therefore the use of a cylindrical substrate with diameter $D$ instead of a flat surface $(D \to \infty)$. A droplet placed on cylinder has two axes of symmetry with different contact lengths. In the following, we define these contact lengths via the cylinder axis as $L$ and $W$ as portrayed in \cref{fig:Sketch_Sliding-Angle}.
+    As initially stated, this work will investigate the influence of substrate geometry. The simplest adaptation we can make here is therefore the use of a cylindrical substrate with diameter $D$ instead of a flat surface $(D \to \infty)$. A droplet placed on a cylinder has two axes of symmetry with different contact lengths. In the following, we define these contact lengths via the cylinder axis as $L$ and $W$ as portrayed in \cref{fig:Sketch_Sliding-Angle}.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.75\linewidth]{../Figs/Sketch_Cylinder.jpeg}
-        \caption{Definition of the perpendicular contact lengths $L$ \& $W$ on a cylinder with diameter $D$. In practice the distance $x$ is measured to calculate $W$.}
+        \caption{Definition of the perpendicular contact lengths $L$ \& $W$ on a cylinder with diameter $D$. In practice, the distance $x$ is measured to calculate $W$.}
         \label{fig:Sketch_Cylinder}
     \end{figure}
     Notice that, while $L$ describes a straight line, $W$ wraps around the cylinder and cannot be accurately measured straight away. For that reason, we measure the straight distance $x$ instead (see \cref{fig:Sketch_Cylinder}), such that
     \begin{align}
         W = D \cdot \arcsin{ \left(\frac{x}{D} \right)}
     \end{align}
-    Furhtermore, we need a ruler to compare droplet volumes $V$ to measured contact lengths $L$ and contact widths $W$. As such we define the \textbf{reference contact length} $L_0(V)$ as the diameter of a half sphere with volume $V$:
+    Furthermore, we need a ruler to compare droplet volumes $V$ to measured contact lengths $L$ and contact widths $W$. As such we define the \textbf{reference contact length} $L_0(V)$ as the diameter of a half sphere with volume $V$:
     \begin{equation}
         L_0(V) = \sqrt[3]{12 \cdot V / \pi}
     \end{equation}
-    Droplets with high contact length $L/L_0 < 1$ for their volume $V$ are \enquote{flattened}, while droplets with smaller contact lenghts $L/L_0 > 1$ are \enquote{rounded}. We hypothesize the proportionality 
+    Droplets with high contact length $L/L_0 > 1$ for their volume $V$ are \enquote{flattened}, while droplets with smaller contact lengths $L/L_0 < 1$ are \enquote{rounded}. We hypothesize the proportionality 
     \begin{align} \label{eq:L_and_W_against_L0}
         L &= k_L \cdot L_0(V) \\
         W &= k_W \cdot L_0(V)
